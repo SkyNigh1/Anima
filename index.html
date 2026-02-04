@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anima - Life, unspoken, present. An immersive digital experience about wildlife conservation and the silent voices of endangered species.">
+    <title>Anima - Life, unspoken, present</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anima.lukebaffait.fr/">
+    <meta property="og:title" content="Anima - Life, unspoken, present">
+    <meta property="og:description" content="An immersive digital experience about wildlife conservation and the silent voices of endangered species.">
+    <meta property="og:image" content="https://anima.lukebaffait.fr/assets/images/animals/red_panda.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://anima.lukebaffait.fr/">
+    <meta property="twitter:title" content="Anima - Life, unspoken, present">
+    <meta property="twitter:description" content="An immersive digital experience about wildlife conservation and the silent voices of endangered species.">
+    <meta property="twitter:image" content="https://anima.lukebaffait.fr/assets/images/animals/red_panda.jpg">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0A0A0A">
+    
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/intro.css">
+</head>
+<body>
+    <!-- Intro Animation Overlay -->
+    <div id="intro-overlay" class="intro-overlay">
+        <!-- WebGL Background Canvas -->
+        <canvas id="webgl-bg" class="webgl-background"></canvas>
+        
+        <div class="intro-container">
+            <!-- The expanding square/rectangle -->
+            <div class="intro-box">
+                <!-- WebGL Background inside box -->
+                <canvas id="webgl-box-bg" class="webgl-box-background"></canvas>
+                
+                <!-- Left "a" letter -->
+                <span class="letter letter-left">a</span>
+                
+                <!-- Center text container with "nim" -->
+                <div class="center-text-container">
+                    <div class="center-text-mask">
+                        <span class="center-text">nim</span>
+                    </div>
+                </div>
+                
+                <!-- Right "a" letter -->
+                <span class="letter letter-right">a</span>
+            </div>
+            
+            <!-- Tagline for phase 3 -->
+            <div class="tagline-container">
+                <div class="tagline-mask">
+                    <span class="tagline-text">Life, unspoken, present.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wipe transition overlay -->
+    <div id="wipe-overlay" class="wipe-overlay"></div>
+
+    <!-- Main Content (hidden during intro) -->
+    <main id="main-content" class="main-content">
+        <!-- Signature top right -->
+        <a href="https://lukebaffait.fr" target="_blank" class="signature">
+            <span>by Luke Baffait</span>
+            <svg class="signature-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        
+        <!-- Hero Section with layered images -->
+        <section id="hero" class="hero">
+            <!-- Background image (same as hero, blurred/larger) -->
+            <div class="hero-background"></div>
+            
+            <!-- Main hero image -->
+            <div class="hero-image"></div>
+            
+            <!-- Text overlay -->
+            <div class="hero-text-container">
+                <div class="hero-text-mask">
+                    <h1 class="hero-text">it feels.</h1>
+                </div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator">
+                <span class="scroll-indicator-text">scroll to discover</span>
+                <div class="scroll-indicator-line"></div>
+            </div>
+        </section>
+        
+        <!-- Stats Section - White parallax overlay -->
+        <section id="stats" class="stats-section">
+            <div class="stats-content">
+                <!-- Main text block -->
+                <div class="stats-text">
+                    <p class="stats-text-line">Every year, millions of lives unfold quietly across forests, deserts, rivers, and oceans—lives that breathe, feel, and respond to the world around them.</p>
+                    <p class="stats-text-line">And yet, much of this living tapestry remains unseen, unheard, and uncounted.</p>
+                    <p class="stats-text-line">What we call wilderness is not emptiness—it is presence.</p>
+                </div>
+                
+                <!-- Key statistics -->
+                <div class="stats-grid">
+                    <!-- Left stat: Species concerned -->
+                    <div class="stat-box species-stat">
+                        <div class="stat-label">Species concerned</div>
+                        <div class="stat-value-container">
+                            <div class="stat-value-mask">
+                                <span class="stat-value species-number">48,646</span>
+                                <span class="stat-value species-percent">28.18%</span>
+                            </div>
+                        </div>
+                        <a href="https://nrl.iucnredlist.org/" target="_blank" class="stat-source">
+                            <span>IUCN Red List</span>
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Right stat: Proportions by category -->
+                    <div class="stat-box proportion-stat">
+                        <div class="stat-label">Proportions</div>
+                        <div class="stat-value-container">
+                            <div class="stat-value-mask">
+                                <span class="stat-value proportion-name">Amphibians</span>
+                                <span class="stat-value proportion-percent">41%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animal Stories Section -->
+        <section id="gallery" class="animal-stories-section">
+            <!-- Mosaïque initiale avec Red Panda qui s'agrandit -->
+            <div class="mosaic-container">
+                <div class="mosaic-grid">
+                    <div class="mosaic-item mosaic-tiger">
+                        <img src="assets/images/animals/tiger.jpg" alt="Tiger">
+                        <div class="mosaic-hover">
+                            <span class="hover-name">Tiger</span>
+                            <span class="hover-region">Asia</span>
+                            <span class="hover-count">~3 900 left</span>
+                        </div>
+                    </div>
+                    <div class="mosaic-item mosaic-polar">
+                        <img src="assets/images/animals/polar_bear.jpg" alt="Polar Bear">
+                        <div class="mosaic-hover">
+                            <span class="hover-name">Polar Bear</span>
+                            <span class="hover-region">Arctic</span>
+                            <span class="hover-count">~20 000–25 000 left</span>
+                        </div>
+                    </div>
+                    <div class="mosaic-item mosaic-gorilla">
+                        <img src="assets/images/animals/gorilla.jpg" alt="Gorilla">
+                        <div class="mosaic-hover">
+                            <span class="hover-name">Mountain Gorilla</span>
+                            <span class="hover-region">Africa</span>
+                            <span class="hover-count">~1 000–1 200 left</span>
+                        </div>
+                    </div>
+                    <div class="mosaic-item mosaic-center">
+                        <img src="assets/images/animals/red_panda.jpg" alt="Red Panda">
+                        <div class="mosaic-overlay"></div>
+                        <div class="mosaic-hover">
+                            <span class="hover-name">Red Panda</span>
+                            <span class="hover-region">Asia</span>
+                            <span class="hover-count">~10 000 left</span>
+                        </div>
+                    </div>
+                    <div class="mosaic-item mosaic-whale">
+                        <img src="assets/images/animals/blue_whale.jpg" alt="Blue Whale">
+                        <div class="mosaic-hover">
+                            <span class="hover-name">Blue Whale</span>
+                            <span class="hover-region">Oceans</span>
+                            <span class="hover-count">~10 000–25 000 left</span>
+                        </div>
+                    </div>
+                    <div class="mosaic-item mosaic-panther">
+                        <img src="assets/images/animals/snow_panther.jpg" alt="Snow Panther">
+                        <div class="mosaic-hover">
+                            <span class="hover-name">Snow Leopard</span>
+                            <span class="hover-region">Asia</span>
+                            <span class="hover-count">~3 920–6 390 left</span>
+                        </div>
+                    </div>
+                    <div class="mosaic-item mosaic-rhino">
+                        <img src="assets/images/animals/rhinocesos.jpg" alt="Rhinoceros">
+                        <div class="mosaic-hover">
+                            <span class="hover-name">Rhinoceros</span>
+                            <span class="hover-region">Africa & Asia</span>
+                            <span class="hover-count">~60–5 000 left</span>
+                        </div>
+                    </div>
+                    <!-- Quote text items -->
+                    <div class="mosaic-item mosaic-quote mosaic-quote-1">
+                        <p class="quote-text">In 30 years, the ecological footprint has increased by 50%, while the Earth has lost a third of its natural resources.</p>
+                    </div>
+                    <div class="mosaic-item mosaic-quote mosaic-quote-2">
+                        <p class="quote-text">"The question is not: Can they reason? nor: Can they talk? but: Can they suffer?"</p>
+                        <span class="quote-author">— Jeremy Bentham</span>
+                    </div>
+                </div>
+                <!-- Texte du Red Panda en dehors de l'élément scalé -->
+                <div class="panda-text-container">
+                    <a href="https://redpandanetwork.org/" target="_blank" class="story-link" data-org="Red Panda Network">
+                        <p>The red panda is disappearing not because it cannot survive, but because its forest no longer exists.</p>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Fullscreen Story Slides (arrivent par-dessus) -->
+            <div class="story-slides">
+                <!-- Slide 1: Polar Bear -->
+                <div class="story-slide" data-slide="1">
+                    <div class="story-image-wrapper">
+                        <img src="assets/images/animals/polar_bear.jpg" alt="Polar Bear">
+                        <div class="story-overlay"></div>
+                        <div class="story-text">
+                            <a href="https://polarbearsinternational.org/" target="_blank" class="story-link" data-org="Polar Bears International">
+                                <p>The polar bear is not losing a battle — it is losing the ground beneath its feet.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Insects (Bees) -->
+                <div class="story-slide" data-slide="2">
+                    <div class="story-image-wrapper">
+                        <img src="assets/images/animals/bee.jpg" alt="Bee">
+                        <div class="story-overlay"></div>
+                        <div class="story-text">
+                            <a href="https://xerces.org/" target="_blank" class="story-link" data-org="Xerces Society">
+                                <p>Without the hum of insects, the world would fall silent — and so would our harvests.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Birds -->
+                <div class="story-slide" data-slide="3">
+                    <div class="story-image-wrapper">
+                        <img src="assets/images/animals/bird.jpg" alt="Bird">
+                        <div class="story-overlay"></div>
+                        <div class="story-text">
+                            <a href="https://www.birdlife.org/" target="_blank" class="story-link" data-org="BirdLife International">
+                                <p>Birds carry seeds across continents, yet we clip their wings with every forest we erase.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: Rhinoceros -->
+                <div class="story-slide" data-slide="4">
+                    <div class="story-image-wrapper">
+                        <img src="assets/images/animals/rhinocesos.jpg" alt="Rhinoceros">
+                        <div class="story-overlay"></div>
+                        <div class="story-text">
+                            <a href="https://www.savetherhino.org/" target="_blank" class="story-link" data-org="Save the Rhino">
+                                <p>The rhinoceros is disappearing for a material that has no value to the living.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5: Blue Whale (Last) -->
+                <div class="story-slide story-slide-last" data-slide="5">
+                    <div class="story-image-wrapper">
+                        <img src="assets/images/animals/blue_whale.jpg" alt="Blue Whale">
+                        <div class="story-overlay"></div>
+                        <div class="story-text">
+                            <a href="https://seashepherd.org/" target="_blank" class="story-link" data-org="Sea Shepherd">
+                                <p>The blue whale survives, but its ocean no longer rests.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- "This can stop." Section -->
+        <section id="call-to-action" class="cta-section">
+            <div class="cta-text-container">
+                <h2 class="cta-text">
+                    <span class="cta-word">This</span>
+                    <span class="cta-word">can</span>
+                    <span class="cta-word">stop.</span>
+                </h2>
+            </div>
+        </section>
+        
+        <!-- Organizations Carousel Section -->
+        <section id="organizations" class="organizations-carousel">
+            <div class="carousel-inner-container">
+                <div class="org-carousel-container">
+                    <div class="org-carousel-wrapper">
+                        <div class="org-carousel-track">
+                        <!-- WWF -->
+                        <div class="org-carousel-slide">
+                            <img src="assets/images/organisations/wwf.jpg" alt="WWF">
+                            <div class="org-content">
+                                <img src="assets/images/logos/wwf.svg" alt="WWF Logo" class="org-logo">
+                                <h3 class="org-name">World Wildlife Fund</h3>
+                                <p class="org-description">WWF works to conserve nature and reduce the most pressing threats to the diversity of life on Earth. Operating in over 100 countries, they protect wildlife and wild places.</p>
+                                <a href="https://www.worldwildlife.org/" target="_blank" class="org-link story-link" data-org="WWF">
+                                    <span>Visit WWF</span>
+                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Sea Shepherd -->
+                        <div class="org-carousel-slide">
+                            <img src="assets/images/organisations/sea_sheperd.jpg" alt="Sea Shepherd">
+                            <div class="org-content org-content-left">
+                                <img src="assets/images/logos/sea_sheperd.webp" alt="Sea Shepherd Logo" class="org-logo">
+                                <h3 class="org-name">Sea Shepherd</h3>
+                                <p class="org-description">Sea Shepherd uses direct action to defend marine wildlife and protect ocean ecosystems. Their fleet patrols the seas to stop illegal fishing and poaching.</p>
+                                <a href="https://seashepherd.org/" target="_blank" class="org-link story-link" data-org="Sea Shepherd">
+                                    <span>Visit Sea Shepherd</span>
+                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Jane Goodall Institute -->
+                        <div class="org-carousel-slide">
+                            <img src="assets/images/organisations/jane_goodall.jpg" alt="Jane Goodall Institute">
+                            <div class="org-content">
+                                <img src="assets/images/logos/jane_goodall.png" alt="Jane Goodall Institute Logo" class="org-logo">
+                                <h3 class="org-name">Jane Goodall Institute</h3>
+                                <p class="org-description">Founded by legendary primatologist Dr. Jane Goodall, the institute empowers people to make a difference for all living things through conservation, science, and education.</p>
+                                <a href="https://janegoodall.org/" target="_blank" class="org-link story-link" data-org="Jane Goodall Institute">
+                                    <span>Visit Jane Goodall Institute</span>
+                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- IUCN -->
+                        <div class="org-carousel-slide">
+                            <img src="assets/images/organisations/iucn.jpg" alt="IUCN">
+                            <div class="org-content org-content-left">
+                                <img src="assets/images/logos/iucn.svg" alt="IUCN Logo" class="org-logo">
+                                <h3 class="org-name">IUCN</h3>
+                                <p class="org-description">The International Union for Conservation of Nature is the global authority on the status of the natural world. Their Red List tracks endangered species worldwide.</p>
+                                <a href="https://www.iucn.org/" target="_blank" class="org-link story-link" data-org="IUCN">
+                                    <span>Visit IUCN</span>
+                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Wildlife Conservation Network -->
+                        <div class="org-carousel-slide">
+                            <img src="assets/images/organisations/wildlife_conservation_network.jpg" alt="Wildlife Conservation Network">
+                            <div class="org-content">
+                                <img src="assets/images/logos/wildlife_conservation_network.svg" alt="Wildlife Conservation Network Logo" class="org-logo">
+                                <h3 class="org-name">Wildlife Conservation Network</h3>
+                                <p class="org-description">WCN protects endangered wildlife by supporting conservationists who ensure wildlife and people coexist and thrive together.</p>
+                                <a href="https://wildnet.org/" target="_blank" class="org-link story-link" data-org="Wildlife Conservation Network">
+                                    <span>Visit WCN</span>
+                                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Navigation -->
+                    <div class="carousel-navigation">
+                        <button class="carousel-nav prev" aria-label="Previous slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="carousel-dots"></div>
+                        <button class="carousel-nav next" aria-label="Next slide">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="site-footer">
+            <!-- Globe canvas background -->
+            <canvas id="globe-canvas" class="globe-canvas"></canvas>
+            
+            <!-- Main content -->
+            <div class="footer-main">
+                <!-- Left side: Brand and phrase -->
+                <div class="footer-left">
+                    <!-- Brand section (appears after phrase) -->
+                    <div class="footer-brand-section">
+                        <span class="footer-brand-name">Anima</span>
+                        <div class="footer-brand-line"></div>
+                    </div>
+                    
+                    <!-- Hope phrase (words animate one by one) -->
+                    <div class="footer-phrase">
+                        <span class="footer-phrase-word">Together,</span>
+                        <span class="footer-phrase-word">we</span>
+                        <span class="footer-phrase-word">can</span>
+                        <span class="footer-phrase-word">rewrite</span>
+                        <span class="footer-phrase-word">their</span>
+                        <span class="footer-phrase-word">story.</span>
+                    </div>
+                </div>
+                
+                <!-- Right side: Socials -->
+                <div class="footer-socials">
+                    <h4 class="socials-title">Socials</h4>
+                    <ul class="socials-list">
+                        <li>
+                            <a href="https://www.linkedin.com/in/luke-baffait/" target="_blank" rel="noopener noreferrer">
+                                <span>LinkedIn</span>
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/LukeBaffworthy" target="_blank" rel="noopener noreferrer">
+                                <span>GitHub</span>
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://lukebaffait.fr" target="_blank" rel="noopener noreferrer">
+                                <span>Portfolio</span>
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.behance.net/lukebaffait" target="_blank" rel="noopener noreferrer">
+                                <span>Behance</span>
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                <p>©2026 Luke Baffait. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <!-- Three.js for globe -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <!-- WebGL Background -->
+    <script src="assets/js/webgl-bg.js"></script>
+    <!-- Custom Scripts -->
+    <script src="assets/js/intro.js"></script>
+    <script src="assets/js/scroll.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
