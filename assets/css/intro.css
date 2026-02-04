@@ -1,0 +1,213 @@
+/* ============================================
+   INTRO ANIMATION STYLES - Anima Website
+   ============================================ */
+
+/* Custom Font */
+@font-face {
+    font-family: 'Egiane';
+    src: url('../fonts/egiane.otf') format('opentype'),
+         url('../fonts/egiane.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Intro Overlay - Full screen black background */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-black);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.intro-overlay.hidden {
+    pointer-events: none;
+}
+
+/* Wipe transition overlay (not used) */
+.wipe-overlay {
+    display: none;
+}
+
+/* WebGL Background Canvas */
+.webgl-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 0;
+    display: none;
+}
+
+/* WebGL inside box */
+.webgl-box-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Container for centering */
+.intro-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* The expanding box/square */
+.intro-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Letters "a" styling */
+.letter {
+    font-family: 'Egiane', var(--font-primary);
+    font-size: 380px;
+    font-weight: normal;
+    color: #000000;
+    line-height: 1;
+    position: absolute;
+    user-select: none;
+    text-transform: lowercase;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.letter-left {
+    left: 25px;
+}
+
+.letter-right {
+    right: 25px;
+}
+
+/* Center text container for "nim" */
+.center-text-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.center-text-mask {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.center-text {
+    font-family: 'Egiane', var(--font-primary);
+    font-size: 180px;
+    font-weight: normal;
+    color: #000000;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+}
+
+/* Tagline container for phase 3 */
+.tagline-container {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    opacity: 0;
+    z-index: 10;
+    max-width: 80%;
+}
+
+.tagline-mask {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.tagline-text {
+    font-family: 'Egiane', var(--font-primary);
+    font-size: clamp(3rem, 12vw, 10rem);
+    font-weight: normal;
+    color: #000000;
+    line-height: 1.1;
+    display: block;
+    white-space: normal;
+}
+
+/* Responsive font sizes */
+@media (max-width: 768px) {
+    .letter,
+    .center-text {
+        font-size: 60px;
+    }
+    
+    .intro-box {
+        width: 180px;
+    }
+    
+    .letter-left {
+        left: 10px;
+    }
+    
+    .letter-right {
+        right: 10px;
+    }
+    
+    .tagline-container {
+        left: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter,
+    .center-text {
+        font-size: 40px;
+    }
+    
+    .intro-box {
+        width: 120px;
+    }
+    
+    .letter-left {
+        left: 8px;
+    }
+    
+    .letter-right {
+        right: 8px;
+    }
+    
+    .tagline-container {
+        left: 4%;
+    }
+}
